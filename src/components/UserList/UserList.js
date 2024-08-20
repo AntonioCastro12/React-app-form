@@ -10,19 +10,19 @@ function UserList({ users, onEditUser, onDeleteUser }) {
         <table className="user-list-table">
           <thead>
             <tr>
-              <th>Name</th>
+              <th>Nombre</th>
               <th>E-mail</th>
-              <th>Phone</th>
+              <th>Teléfono</th>
               <th>Website</th>
-              <th>Actions</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
             {users.map(user => (
               <tr key={user.id}>
-                <td data-label="Name">{user.name}</td>
+                <td data-label="Nombre">{user.name}</td>
                 <td data-label="E-mail">{user.email}</td>
-                <td data-label="Phone">{user.phone}</td>
+                <td data-label="Teléfono">{user.phone}</td>
                 <td data-label="Website">{user.website}</td>
                 <td data-label="Acciones" className="actions">
                   <button className="edit" onClick={() => onEditUser(user)}>
