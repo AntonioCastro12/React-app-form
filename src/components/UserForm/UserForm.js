@@ -15,7 +15,7 @@ function UserForm({ addUser, updateUser, isEditing, editingUser, cancelEdit }) {
         name: editingUser.name || '', 
         email: editingUser.email || '', 
         website: editingUser.website || '',
-        phone: ''
+        phone:  editingUser.phone || ''
       });
     } else {
       setUser({ 
@@ -29,19 +29,7 @@ function UserForm({ addUser, updateUser, isEditing, editingUser, cancelEdit }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    if (name.includes('.')) {
-      const [parent, child] = name.split('.');
-      setUser(prevUser => ({
-        ...prevUser,
-        [parent]: {
-          ...prevUser[parent],
-          [child]: value
-        }
-      }));
-    } else {
-      setUser(prevUser => ({ ...prevUser, [name]: value }));
-    }
+    setUser(prevUser => ({ ...prevUser, [name]: value }));
   };
 
   const handleSubmit = (e) => {
