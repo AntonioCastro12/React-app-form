@@ -17,13 +17,12 @@ function App() {
       } else {
         try {
           const response = await axios.get('https://jsonplaceholder.typicode.com/users');
-          console.log('Respuesta de la API:', response.data);
           const initialUsers = response.data.map(user => ({
             id: user.id,
-            name: user.name,  // Aseguramos que el campo sea 'name'
-            email: user.email,  // Añadimos 'email'
+            name: user.name,
+            email: user.email,
             phone: user.phone,
-            website: user.website // Añadimos 'website'
+            website: user.website
           }));
           setUsers(initialUsers);
           localStorage.setItem('users', JSON.stringify(initialUsers));

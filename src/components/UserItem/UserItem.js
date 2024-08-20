@@ -1,5 +1,5 @@
 import React from 'react';
-import './UserItem.css';
+import 'UserItem.css';
 
 function UserItem({ user, onEdit, onDelete }) {
   return (
