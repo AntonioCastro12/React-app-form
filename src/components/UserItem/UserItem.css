@@ -1,0 +1,57 @@
+/* UsertList.css */
+
+/* Estilos para el ítem de usuario */
+.user-list li {
+    background-color: #f9f9f9;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background-color 0.3s;
+  }
+  
+  .user-list li:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .user-list li h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  
+  .user-list li p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+  }
+  
+  .user-list li p:last-child {
+    margin-bottom: 20px;
+  }
+  
+  .user-list li .user-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
+  .user-list li .user-actions button {
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .user-list li .user-actions button:hover {
+    background-color: #005bb5;
+  }

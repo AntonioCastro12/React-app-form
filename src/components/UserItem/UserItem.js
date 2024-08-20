@@ -1,15 +1,19 @@
 import React from 'react';
+import './UserItem.css';
 
 function UserItem({ user, onEdit, onDelete }) {
   return (
-    <li>
-      <h3>{user.name}</h3>
-      <p>Email: {user.email}</p>
-      <p>Dirección: {user.address.street}, {user.address.suite}, {user.address.city}, {user.address.zipcode}</p>
-      <button onClick={() => onEdit(user)}>Editar</button>
-      <button onClick={() => onDelete(user.id)}>Eliminar</button>
+    <li className="user-item">
+      <span>{user.name}</span>
+      <span>{user.email}</span>
+      <span>{user.phone}</span>
+      <span>{user.website}</span>
+      <div className="actions">
+        <button onClick={() => onEdit(user)}>Editar</button>
+        <button onClick={() => onDelete(user.id)}>Eliminar</button>
+      </div>
     </li>
   );
 }
 
-export default UserItem; 
+export default UserItem;

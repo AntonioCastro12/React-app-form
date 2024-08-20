@@ -7,49 +7,81 @@ import './App.css';
 function App() {
   const [users, setUsers] = useState([]);
   const [editingUser, setEditingUser] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
-    const storedUsers = localStorage.getItem('users');
-    if (storedUsers) {
-      setUsers(JSON.parse(storedUsers));
-    } else {
-      axios.get('https://jsonplaceholder.typicode.com/users')
-        .then(response => {
+    const fetchUsers = async () => {
+      const storedUsers = localStorage.getItem('users');
+      if (storedUsers && storedUsers !== "[]") {
+        setUsers(JSON.parse(storedUsers));
+      } else {
+        try {
+          const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+          console.log('Respuesta de la API:', response.data);
           const initialUsers = response.data.map(user => ({
-            ...user,
-            id: user.id 
+            id: user.id,
+            nombre: user.name.split(' ')[0],
+            primerApellido: user.name.split(' ')[1] || '',
+            phone: user.phone,
           }));
           setUsers(initialUsers);
           localStorage.setItem('users', JSON.stringify(initialUsers));
-        });
-    }
+        } catch (error) {
+          console.error('Error al obtener los usuarios del API:', error);
+          alert('Hubo un problema al cargar los usuarios. Por favor, intenta de nuevo más tarde.');
+        }
+      }
+    };
+    
+    fetchUsers();
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('users', JSON.stringify(users));
+    if (users.length > 0) {
+      localStorage.setItem('users', JSON.stringify(users));
+    }
   }, [users]);
 
   const addUser = (user) => {
-    const newUser = {
-      ...user,
-      id: Date.now() 
-    };
+    const newUser = { ...user, id: Date.now() };
     setUsers([...users, newUser]);
   };
 
-  const editUser = (updatedUser) => {
+  const updateUser = (updatedUser) => {
     setUsers(users.map(user => (user.id === updatedUser.id ? updatedUser : user)));
+    setIsEditing(false);
+    setEditingUser(null);
   };
 
   const deleteUser = (id) => {
     setUsers(users.filter(user => user.id !== id));
   };
 
+  const cancelEdit = () => {
+    setIsEditing(false);
+    setEditingUser(null);
+  };
+
+  const startEditUser = (user) => {
+    setIsEditing(true);
+    setEditingUser(user);
+  };
+
   return (
     <div className="app-container">
       <h1>User Management</h1>
-      <UserForm addUser={addUser} userToEdit={editingUser} /> 
-      <UserList users={users} onEditUser={setEditingUser} onDeleteUser={deleteUser} /> 
+      <UserForm 
+        addUser={addUser} 
+        updateUser={updateUser} 
+        isEditing={isEditing} 
+        editingUser={editingUser} 
+        cancelEdit={cancelEdit} 
+      />
+      {users.length > 0 ? (
+        <UserList users={users} onEditUser={startEditUser} onDeleteUser={deleteUser} />
+      ) : (
+        <p>Cargando usuarios...</p>
+      )}
     </div>
   );
 }

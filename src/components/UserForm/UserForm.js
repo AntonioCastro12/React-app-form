@@ -1,134 +1,100 @@
 import React, { useState, useEffect } from 'react';
-import './UseForm.css'; 
+import './UseForm.css';
 
-function UserForm({ addUser, userToEdit, editUser }) {
-  const [formData, setFormData] = useState({
-    name: '',
-    username: '',
-    email: '',
-    address: {
-      street: '',
-      suite: '',
-      city: '',
-      zipcode: '',
-      geo: {
-        lat: '',
-        lng: ''
-      }
-    }
+function UserForm({ addUser, updateUser, isEditing, editingUser, cancelEdit }) {
+  const [user, setUser] = useState({ 
+    name: '', 
+    email: '', 
+    website: '',
+    phone: ''
   });
 
   useEffect(() => {
-    if (userToEdit) {
-      setFormData(userToEdit);
+    if (isEditing && editingUser) {
+      setUser({
+        name: editingUser.name || '', 
+        email: editingUser.email || '', 
+        website: editingUser.website || '',
+        phone: ''
+      });
+    } else {
+      setUser({ 
+        name: '', 
+        email: '', 
+        website: '',
+        phone: ''
+      });
     }
-  }, [userToEdit]);
+  }, [isEditing, editingUser]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
     if (name.includes('.')) {
       const [parent, child] = name.split('.');
-      setFormData(prev => ({
-        ...prev,
+      setUser(prevUser => ({
+        ...prevUser,
         [parent]: {
-          ...prev[parent],
+          ...prevUser[parent],
           [child]: value
         }
       }));
     } else {
-      setFormData({ ...formData, [name]: value });
+      setUser(prevUser => ({ ...prevUser, [name]: value }));
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (userToEdit) {
-      editUser({ ...formData });
+    if (isEditing) {
+      updateUser(user);
     } else {
-      addUser(formData);
+      addUser(user);
     }
-
-    setFormData({
-      name: '',
-      username: '',
-      email: '',
-      address: {
-        street: '',
-        suite: '',
-        city: '',
-        zipcode: '',
-       
-      }
+    setUser({ 
+      name: '', 
+      email: '', 
+      website: '',
+      phone: ''
     });
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h3>Información Personal</h3>
-      <div>
-        <label htmlFor="name">Nombre:</label>
-        <input 
-          type="text" 
-          id="name" 
-          name="name" 
-          value={formData.name} 
-          onChange={handleChange} 
-          required 
-        />
-      </div>
-
-      <h3>Dirección</h3>
-      <div>
-        <label htmlFor="address.street">Calle:</label>
-        <input 
-          type="text" 
-          id="address.street" 
-          name="address.street" 
-          value={formData.address.street} 
-          onChange={handleChange} 
-          required 
-        />
-      </div>
-  
-      <div>
-        <label htmlFor="address.city">Ciudad:</label>
-        <input 
-          type="text" 
-          id="address.city" 
-          name="address.city" 
-          value={formData.address.city} 
-          onChange={handleChange} 
-          required 
-        />
-      </div>
-      <div>
-        <label htmlFor="address.zipcode">Código Postal:</label>
-        <input 
-          type="text" 
-          id="address.zipcode" 
-          name="address.zipcode" 
-          value={formData.address.zipcode} 
-          onChange={handleChange} 
-          required 
-        />
-      </div>
-
-      <h3>Contacto</h3>
-      <div>
-        <label htmlFor="email">E-mail:</label>
-        <input 
-          type="email" 
-          id="email" 
-          name="email" 
-          value={formData.email} 
-          onChange={handleChange} 
-          required 
-        />
-      </div>
-
-      <button type="submit">{userToEdit ? 'Actualizar' : 'Agregar'}</button>
+    <form onSubmit={handleSubmit} className="user-form">
+      <input
+        type="text"
+        name="name"
+        value={user.name}
+        onChange={handleChange}
+        placeholder="Nombre"
+        required
+      />
+      <input
+        type="text"
+        name="email"
+        value={user.email}
+        onChange={handleChange}
+        placeholder="E-mail"
+        required
+      />
+      <input
+        type="text"
+        name="website"
+        value={user.website}
+        onChange={handleChange}
+        placeholder="Website"
+        required
+      />
+      <input 
+        type="text" 
+        name="phone" 
+        value={user.phone}
+        onChange={handleChange} 
+        placeholder="Phone" 
+        required 
+      />
+      <button type="submit">{isEditing ? 'Actualizar Usuario' : 'Agregar Usuario'}</button>
+      {isEditing && <button type="button" onClick={cancelEdit}>Cancelar</button>}
     </form>
   );
 }
