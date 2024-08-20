@@ -9,7 +9,13 @@ function UserList({ users, onEditUser, onDeleteUser }) {
       {users.length > 0 ? (
         <table className="user-list-table">
           <thead>
-            <tr><th>Name</th><th>E-mail</th><th>Phone</th><th>Website</th><th>Actions</th></tr>
+            <tr>
+              <th>Name</th>
+              <th>E-mail</th>
+              <th>Phone</th>
+              <th>Website</th>
+              <th>Actions</th>
+            </tr>
           </thead>
           <tbody>
             {users.map(user => (

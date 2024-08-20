@@ -20,9 +20,10 @@ function App() {
           console.log('Respuesta de la API:', response.data);
           const initialUsers = response.data.map(user => ({
             id: user.id,
-            nombre: user.name.split(' ')[0],
-            primerApellido: user.name.split(' ')[1] || '',
+            name: user.name,  // Aseguramos que el campo sea 'name'
+            email: user.email,  // Añadimos 'email'
             phone: user.phone,
+            website: user.website // Añadimos 'website'
           }));
           setUsers(initialUsers);
           localStorage.setItem('users', JSON.stringify(initialUsers));
