@@ -69,7 +69,7 @@ function App() {
 
   return (
     <div className="app-container">
-      <h1>User Management</h1>
+      <h1>Formulario Usuario</h1>
       <UserForm 
         addUser={addUser} 
         updateUser={updateUser} 

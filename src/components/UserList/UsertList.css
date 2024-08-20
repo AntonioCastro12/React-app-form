@@ -18,6 +18,7 @@
 .user-list-table {
   width: 100%;
   border-collapse: collapse;
+  font-size: 1rem;
 }
 
 .user-list-table th,
@@ -25,7 +26,8 @@
   padding: 12px 15px;
   text-align: left;
   border-bottom: 1px solid #dee2e6;
-  white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+  white-space: nowrap;
+  font-size: 13px;
 }
 
 .user-list-table th {
@@ -51,24 +53,26 @@
   transition: background-color 0.3s ease;
   display: flex;
   align-items: center;
+  font-size: .7rem;
 }
 
 .actions .edit {
-  background-color: #28a745;
+  background-color: #015958;
   color: white;
+  margin: 5px 0px 0px;
 }
 
 .actions .edit:hover {
-  background-color: #218838;
+  background-color: #023535;
 }
 
 .actions .delete {
-  background-color: #dc3545;
+  background-color: #591C21;
   color: white;
 }
 
 .actions .delete:hover {
-  background-color: #c82333;
+  background-color: #8C1F28;
 }
 
 .actions .icon {
@@ -130,12 +134,12 @@
   .user-list-table td::before {
     content: attr(data-label);
     font-weight: bold;
-    color: #007bff;
+    color: black;
   }
 
   .actions {
     flex-direction: column;
-    align-items: center;
+    align-items: center3;
   }
 
   .actions button {

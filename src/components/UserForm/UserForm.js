@@ -66,7 +66,7 @@ function UserForm({ addUser, updateUser, isEditing, editingUser, cancelEdit }) {
         name="name"
         value={user.name}
         onChange={handleChange}
-        placeholder="Nombre"
+        placeholder="Name"
         required
       />
       <input
