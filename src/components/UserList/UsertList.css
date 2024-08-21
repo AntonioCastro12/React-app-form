@@ -46,7 +46,7 @@
 
 .actions button {
   border: none;
-  padding: 8px 12px;
+  /* padding: 8px 12px; */
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -58,7 +58,7 @@
 .actions .edit {
   background-color: #015958;
   color: white;
-  margin: 5px 0px 0px;
+ 
 }
 
 .actions .edit:hover {
