@@ -103,6 +103,7 @@
 
   .user-list-table {
     display: block;
+    margin:30px
   }
 
   .user-list-table thead {
