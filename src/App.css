@@ -1,4 +1,4 @@
-/* Estilos generales */
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f9;
@@ -7,7 +7,7 @@ body {
   padding: 0;
 }
 
-/* Contenedor principal */
+
 .app-container {
   max-width: 900px;
   margin: 40px auto;
@@ -17,7 +17,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Título principal */
+
 h1 {
   text-align: center;
   color: #333;
@@ -26,14 +26,13 @@ h1 {
   font-weight: bold;
 }
 
-/* Estilo del mensaje de carga */
 p {
   text-align: center;
   font-size: 1.2em;
   color: #666;
 }
 
-/* Estilo de los botones */
+
 button {
   font-size: 16px;
   padding: 10px 15px;
@@ -47,7 +46,7 @@ button:hover {
   background-color: #0056b3;
 }
 
-/* Botón de edición */
+
 button.edit {
   background-color: #007bff;
   color: white;
@@ -58,7 +57,7 @@ button.edit:hover {
   background-color: #0056b3;
 }
 
-/* Botón de eliminación */
+
 button.delete {
   background-color: #dc3545;
   color: white;
@@ -68,14 +67,14 @@ button.delete:hover {
   background-color: #c82333;
 }
 
-/* Iconos en los botones */
+
 button .icon {
   margin-right: 5px;
 }
 
-/* Estilo de la tabla de usuarios */
+
 .user-list-table {
-  width: 100%;
+ 
   border-collapse: collapse;
   margin-bottom: 30px;
 }

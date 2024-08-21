@@ -5,7 +5,6 @@
   background-color: #f8f9fa;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow-x: auto; /* Permite el desplazamiento horizontal en pantallas pequeñas */
 }
 
 .user-list-container h2 {
@@ -103,7 +102,9 @@
 
   .user-list-table {
     display: block;
-    margin:30px
+    margin: 30px;
+    
+    
   }
 
   .user-list-table thead {
@@ -125,11 +126,11 @@
     padding: 10px;
     border-bottom: 1px solid #dee2e6;
     text-align: left;
-    white-space: normal; /* Permite que el texto se ajuste */
+    white-space: normal; 
   }
 
   .user-list-table td:last-child {
-    border-bottom: 0; /* Elimina la última línea divisoria */
+    border-bottom: 0; 
   }
 
   .user-list-table td::before {
