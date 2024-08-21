@@ -31,25 +31,38 @@ const axiosInstance = axios.create({
   baseURL: 'https://jsonplaceholder.typicode.com', 
 });
 
-// Interceptor para añadir headers a cada solicitud
 axiosInstance.interceptors.request.use(
   config => {
-    // Aquí puedes añadir headers personalizados
-    const token = localStorage.getItem('authToken'); // Suponiendo que tienes un token almacenado en localStorage
+    const token = localStorage.getItem('authToken'); 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },
   error => {
-    // Manejo de errores al configurar la solicitud
     return Promise.reject(error);
   }
 );
 
 export default axiosInstance;
 
-  
+  3.	¿Puedes explicar el concepto de "closure" en JavaScript con un ejemplo?
+
+
+function crearSaludo(saludo) {
+  return function(nombre) {
+    console.log(saludo + ", " + nombre + "!");
+  }
+}
+
+const saludarHola = crearSaludo("Hola");
+const saludarBuenosDias = crearSaludo("Buenos días");
+
+saludarHola("Ana");   // Output: Hola, Ana!
+saludarBuenosDias("Juan"); // Output: Buenos días, Juan!
+
+lo que se muestra en consola --> Hola, Ana!
+lo que se muestra en consola --> Buenos dias, Juan!
 
 
 

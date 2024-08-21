@@ -130,7 +130,8 @@
   }
 
   .user-list-table td:last-child {
-    border-bottom: 0; 
+    border-bottom: 0;
+    align-items: center; 
   }
 
   .user-list-table td::before {
