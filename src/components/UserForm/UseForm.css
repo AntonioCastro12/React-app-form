@@ -23,7 +23,7 @@
 
 /* Cambio de borde en el foco de los inputs */
 .user-form input[type="text"]:focus {
-  border-color: #007bff;
+  border-color: #3d7ee5;
   outline: none;
 }
 

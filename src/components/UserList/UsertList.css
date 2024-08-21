@@ -56,7 +56,7 @@
 }
 
 .actions .edit {
-  background-color: #015958;
+  background-color: #3c743f;
   color: white;
  
 }
@@ -66,12 +66,12 @@
 }
 
 .actions .delete {
-  background-color: #591C21;
+  background-color: #ad2a29;
   color: white;
 }
 
 .actions .delete:hover {
-  background-color: #8C1F28;
+  background-color: #591C21;
 }
 
 .actions .icon {

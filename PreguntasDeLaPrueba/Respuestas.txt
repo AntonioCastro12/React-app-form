@@ -1,0 +1,55 @@
+
+1.	¿Puedes mostrar un ejemplo de cómo harías una solicitud GET y POST con Axios?
+
+import axios from 'axios';
+
+
+axios.get('https://jsonplaceholder.typicode.com/users')
+  .then(respuesta => {
+    console.log(respuesta.data); 
+  })
+  .catch(error => {
+    console.error('Error en la solicitud GET:', error);
+  });
+
+// Ejemplo de solicitud POST
+axios.post('https://jsonplaceholder.typicode.com/users', { nuevoDato: 'valor' })
+  .then(respuesta => {
+    console.log(respuesta.data); 
+  })
+  .catch(error => {
+    console.error('Error en la solicitud POST:', error);
+  });
+
+
+
+2.	¿Puedes dar un ejemplo de cómo has utilizado interceptors para manejar errores globalmente o añadir headers a cada petición?
+
+import axios from 'axios';
+
+const axiosInstance = axios.create({
+  baseURL: 'https://jsonplaceholder.typicode.com', 
+});
+
+// Interceptor para añadir headers a cada solicitud
+axiosInstance.interceptors.request.use(
+  config => {
+    // Aquí puedes añadir headers personalizados
+    const token = localStorage.getItem('authToken'); // Suponiendo que tienes un token almacenado en localStorage
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  error => {
+    // Manejo de errores al configurar la solicitud
+    return Promise.reject(error);
+  }
+);
+
+export default axiosInstance;
+
+  
+
+
+
