@@ -46,6 +46,8 @@ axiosInstance.interceptors.request.use(
 
 export default axiosInstance;
 
+
+
   3.	¿Puedes explicar el concepto de "closure" en JavaScript con un ejemplo?
 
 
@@ -58,11 +60,180 @@ function crearSaludo(saludo) {
 const saludarHola = crearSaludo("Hola");
 const saludarBuenosDias = crearSaludo("Buenos días");
 
-saludarHola("Ana");   // Output: Hola, Ana!
-saludarBuenosDias("Juan"); // Output: Buenos días, Juan!
+saludarHola("Ana");  
+saludarBuenosDias("Juan"); 
 
 lo que se muestra en consola --> Hola, Ana!
 lo que se muestra en consola --> Buenos dias, Juan!
 
+
+
+4.	¿Qué son las promesas y cómo las usas?
+
+Pendiente: Es el estado inicial, es cuando la operacion esta esperando ser completada.
+cumplida: Es cuando la opreciaon se comppleto y tiene valores como resultados.
+Rechazada: La operacion tiene un error y la promesa fue rechazada.
+
+Esta seria una forma de mostrar una promesa:
+
+const myPromise = new Promise((resolve, reject) => {
+  const success = true;
+
+  if (success) {
+    resolve("La operación fue exitosa!");
+  } else {
+    reject("Hubo un error en la operación.");
+  }
+});
+
+myPromise
+  .then((message) => {
+    console.log(message); 
+  })
+  .catch((error) => {
+    console.error(error); 
+  });
+
+
+
+
+  5.	¿Puedes explicar la diferencia entre async/await y las promesas? ¿Puedes dar un ejemplo de cómo has manejado errores en solicitudes AJAX?
+
+
+  Diferencia entre promesas y Async / Await:
+
+  Sintaxis y Legibilidad:
+
+Promesas: Utilizan métodos .then(), .catch(), y .finally() para manejar el resultado de las operaciones asíncronas.
+
+          *El manejor de errores es un poco mas dificil de leer
+
+          *El metodo de ejecución es mas dificil de seguir, mas cuando se encadena mas codigo 
+
+Async/Await: Esta sintaxis permite escribir codigo asíncrono y ayuda que la lectura del codigo sea mas facil 
+
+          *El manejo de errores es mas controlado y con mejor lectura.
+
+          * Este facilita mas la ejecucuión, haciendo que se ejecute de manera secucencial.
+
+
+  Ejemplo de como manejar errores con  AJAX
+
+import axios from 'axios';
+
+fetch('https://jsonplaceholder.typicode.com/users') 
+  .then(response => {
+    if (!response.ok) { 
+      throw new Error('Error en la solicitud: ' + response.status); 
+    }
+    return response.json(); 
+  })
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.error('Error:', error.message); 
+  });
+
+
+  
+  
+  6.	¿Cómo harías una solicitud AJAX utilizando fetch?
+
+
+  fetch('https://jsonplaceholder.typicode.com/users') 
+  .then(response => {
+    if (!response.ok) { 
+      throw new Error('Error en la solicitud: ' + response.status); 
+    }
+    return response.json(); 
+  })
+  .then(data => {
+    console.log(data); 
+  })
+  .catch(error => {
+    console.error('Error:', error.message); 
+  });
+
+
+  
+  
+  7.	Imagina que necesitas crear un formulario en React que almacene sus datos en localStorage cada vez que el usuario escribe. ¿Cómo lo harías?
+
+
+  import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+function App() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    axios.get('https://jsonplaceholder.typicode.com/users')
+      .then(response => setUsers(response.data))
+      .catch(error => console.error('Error al obtener usuarios:', error));
+  }, []);
+
+  return (
+    <div>
+      <h1>Lista de Usuarios</h1>
+      <ul>
+        {users.map(user => (
+          <li key={user.id}>
+            {user.name} - {user.email}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default App;
+
+
+
+
+8.	Supongamos que tienes que consumir una API REST para mostrar una lista de usuarios en tu aplicación. ¿Cómo lo implementarías utilizando Axios?
+
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+function App() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    axios.get('https://jsonplaceholder.typicode.com/users')   
+
+      .then(response => setUsers(response.data)); 
+  }, []);
+
+  return (
+    <div>
+      <h1>Lista   
+ de Usuarios</h1>
+      <ul>
+        {users.map(user => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default App;
+
+
+
+
+9.	¿Cómo manejarías un estado complejo en una aplicación React? ¿Prefieres usar useState o useReducer en este caso?
+
+
+Prefiero usar useReducer
+
+* Lo uso cuando tiene multiples valores que estan relacionados 
+
+* Si se manejan estados de diferentes manejaras 
+ 
+* Cuanndo las actulizaciones son complejas
 
 

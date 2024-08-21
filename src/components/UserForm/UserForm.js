@@ -11,7 +11,7 @@ function UserForm({ addUser, updateUser, isEditing, editingUser, cancelEdit }) {
 
   useEffect(() => {
     if (isEditing && editingUser) {
-      // Cargar los datos del usuario a editar en el formulario
+     
       setUser({
         name: editingUser.name || '', 
         email: editingUser.email || '', 
@@ -19,7 +19,7 @@ function UserForm({ addUser, updateUser, isEditing, editingUser, cancelEdit }) {
         phone:  editingUser.phone || ''
       });
     } else {
-      // Limpiar el formulario cuando no estamos en modo de edición
+     
       setUser({ 
         name: '', 
         email: '', 
@@ -37,12 +37,12 @@ function UserForm({ addUser, updateUser, isEditing, editingUser, cancelEdit }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isEditing) {
-      // Asegúrate de pasar el ID del usuario al actualizar
+    
       updateUser({ ...user, id: editingUser.id });
     } else {
       addUser(user);
     }
-    // Limpiar el formulario después de enviar
+    
     setUser({ 
       name: '', 
       email: '', 

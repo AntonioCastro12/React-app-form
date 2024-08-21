@@ -123,8 +123,8 @@ button .icon {
 @media (max-width: 480px) {
   .user-list-table {
     display: block;
-    width: 100%; /* Asegúrate de que la tabla use todo el ancho disponible */
-    overflow-x: auto; /* Permite el desplazamiento horizontal si es necesario */
+    width: 100%; 
+    overflow-x: auto;
     margin: 0;
     padding: 0;
   }

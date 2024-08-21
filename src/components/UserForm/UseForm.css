@@ -1,4 +1,3 @@
-/* Contenedor del formulario */
 .user-form {
   display: flex;
   flex-direction: column;
@@ -10,7 +9,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo de los inputs */
+
 .user-form input[type="text"] {
   margin-bottom: 15px;
   padding: 10px;
@@ -21,13 +20,13 @@
   transition: border-color 0.3s ease-in-out;
 }
 
-/* Cambio de borde en el foco de los inputs */
+
 .user-form input[type="text"]:focus {
   border-color: #3d7ee5;
   outline: none;
 }
 
-/* Estilo de los botones */
+
 .user-form button[type="submit"],
 .user-form button[type="button"] {
   padding: 10px 15px;
@@ -41,12 +40,12 @@
   transition: background-color 0.3s ease-in-out;
 }
 
-/* Estilo del botón de cancelar */
+
 .user-form button[type="button"] {
   background-color: #6c757d;
 }
 
-/* Cambio de color en hover de los botones */
+
 .user-form button[type="submit"]:hover,
 .user-form button[type="button"]:hover {
   background-color: #0056b3;
@@ -56,7 +55,6 @@
   background-color: #5a6268;
 }
 
-/* Ajustes de fuente */
 .user-form input[type="text"]::placeholder {
   color: #888;
   font-style: italic;
@@ -67,7 +65,7 @@
   font-weight: bold;
 }
 
-/* Ajuste de texto de los botones */
+
 .user-form button[type="submit"]:hover,
 .user-form button[type="button"]:hover {
   font-weight: bold;

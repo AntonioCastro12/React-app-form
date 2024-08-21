@@ -46,7 +46,7 @@
 
 .actions button {
   border: none;
-  /* padding: 8px 12px; */
+
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -78,7 +78,6 @@
   margin-right: 8px;
 }
 
-/* Estilos responsive para pantallas pequeñas */
 @media (max-width: 768px) {
   .user-list-table th,
   .user-list-table td {
@@ -108,7 +107,7 @@
   }
 
   .user-list-table thead {
-    display: none; /* Oculta los encabezados en móviles */
+    display: none; 
   }
 
   .user-list-table tbody tr {
