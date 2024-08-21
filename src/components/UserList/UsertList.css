@@ -142,12 +142,15 @@
 
   .actions {
     flex-direction: column;
-    align-items: center3;
+    align-items: center;
   }
 
   .actions button {
     margin-top: 5px;
   }
+
+  
+    
 
   
 
